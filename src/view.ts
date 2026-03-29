@@ -35,7 +35,7 @@ export class CookieClickerView extends ItemView {
 	}
 
 	async onOpen(): Promise<void> {
-		// Award offline cookies
+		// Award offline diamonds
 		this.awardOfflineCookies();
 
 		const container = this.contentEl;
@@ -44,7 +44,7 @@ export class CookieClickerView extends ItemView {
 
 		// --- Header ---
 		const header = container.createDiv('cc-header');
-		header.createEl('h2', { text: 'Cookie Clicker', cls: 'cc-title' });
+		header.createEl('h2', { text: 'Diamond Clicker', cls: 'cc-title' });
 
 		// --- Cookie Display ---
 		const cookieSection = container.createDiv('cc-cookie-section');
@@ -56,7 +56,7 @@ export class CookieClickerView extends ItemView {
 		const cookieBtnWrapper = cookieSection.createDiv('cc-cookie-btn-wrapper');
 		this.floatingNumbers = cookieBtnWrapper.createDiv('cc-floating-numbers');
 		this.cookieBtn = cookieBtnWrapper.createDiv('cc-cookie-btn');
-		this.cookieBtn.innerHTML = `<span class="cc-cookie-emoji">🍪</span>`;
+		this.cookieBtn.innerHTML = `<span class="cc-cookie-emoji">💎</span>`;
 		this.cookieBtn.addEventListener('click', (e) => this.handleClick(e));
 
 		// --- Tabs ---
@@ -127,7 +127,7 @@ export class CookieClickerView extends ItemView {
 				const earned = cps * elapsed * 0.5;
 				this.state.cookies += earned;
 				this.state.totalCookies += earned;
-				new Notice(`Welcome back! You earned ${formatNumber(earned)} cookies while away.`);
+				new Notice(`Welcome back! You earned ${formatNumber(earned)} diamonds while away.`);
 			}
 		}
 	}
@@ -168,7 +168,7 @@ export class CookieClickerView extends ItemView {
 
 	private renderCookieDisplay() {
 		if (this.cookieCountEl) {
-			this.cookieCountEl.textContent = `${formatNumber(this.state.cookies)} cookies`;
+			this.cookieCountEl.textContent = `${formatNumber(this.state.cookies)} diamonds`;
 		}
 		if (this.cpsEl) {
 			const cps = getCps(this.state);
@@ -202,7 +202,7 @@ export class CookieClickerView extends ItemView {
 			left.createSpan({ text: b.icon, cls: 'cc-building-icon' });
 			const info = left.createDiv('cc-building-info');
 			info.createDiv({ text: b.name, cls: 'cc-building-name' });
-			info.createDiv({ text: `${formatNumber(cost)} cookies`, cls: 'cc-building-cost' });
+			info.createDiv({ text: `${formatNumber(cost)} diamonds`, cls: 'cc-building-cost' });
 
 			const right = row.createDiv('cc-building-right');
 			right.createSpan({ text: owned.toString(), cls: 'cc-building-owned' });
@@ -252,7 +252,7 @@ export class CookieClickerView extends ItemView {
 			const info = left.createDiv('cc-upgrade-info');
 			info.createDiv({ text: u.name, cls: 'cc-upgrade-name' });
 			info.createDiv({ text: u.description, cls: 'cc-upgrade-desc' });
-			info.createDiv({ text: `${formatNumber(u.cost)} cookies`, cls: 'cc-upgrade-cost' });
+			info.createDiv({ text: `${formatNumber(u.cost)} diamonds`, cls: 'cc-upgrade-cost' });
 
 			row.addEventListener('click', () => {
 				this.buyUpgrade(i);
