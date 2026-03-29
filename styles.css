@@ -1,5 +1,5 @@
 /* ============================================
-   Cookie Clicker — Minecraft Shiny Theme
+   Cookie Clicker — Minecraft Netherite Theme
    ============================================ */
 
 /* --- Minecraft pixel font via Google Fonts --- */
@@ -7,28 +7,31 @@
 
 /* --- CSS Custom Properties --- */
 .cookie-clicker-container {
-	--mc-dirt: #8B6914;
-	--mc-dirt-dark: #6B4F10;
+	--mc-netherite: #4A3B31;
+	--mc-netherite-light: #6B5647;
+	--mc-netherite-glow: #8B7355;
+	--mc-ember: #FF6B2C;
+	--mc-ember-glow: #FF8F40;
+	--mc-ember-hot: #FFAB60;
+	--mc-lava: #FF4500;
+	--mc-lava-glow: #FF6A33;
+	--mc-nether-red: #8B2500;
+	--mc-nether-dark: #1A0800;
+	--mc-nether-bg: #200C04;
 	--mc-stone: #7F7F7F;
-	--mc-stone-dark: #5A5A5A;
-	--mc-grass: #5D9B3A;
-	--mc-grass-light: #7EC850;
-	--mc-diamond: #4AEDD9;
-	--mc-diamond-glow: #00FFF0;
-	--mc-diamond-dark: #2AADAA;
+	--mc-stone-dark: #4A3830;
 	--mc-gold: #FCDB05;
 	--mc-gold-glow: #FFF176;
-	--mc-obsidian: #1A0A2E;
-	--mc-obsidian-light: #2D1B4E;
-	--mc-bedrock: #3C3C3C;
 	--mc-enchant-purple: #A855F7;
 	--mc-enchant-glow: #C084FC;
 	--mc-redstone: #FF1A1A;
-	--mc-text: #E8E8E8;
-	--mc-text-dim: #9CA3AF;
-	--mc-border: #4A4A4A;
-	--mc-panel: rgba(20, 10, 35, 0.85);
-	--mc-panel-hover: rgba(40, 25, 65, 0.9);
+	--mc-grass: #5D9B3A;
+	--mc-grass-light: #7EC850;
+	--mc-text: #E8DDD4;
+	--mc-text-dim: #9C8E82;
+	--mc-border: #5A4438;
+	--mc-panel: rgba(30, 12, 6, 0.88);
+	--mc-panel-hover: rgba(50, 22, 10, 0.92);
 
 	display: flex;
 	flex-direction: column;
@@ -42,17 +45,17 @@
 			0deg,
 			transparent,
 			transparent 31px,
-			rgba(0,0,0,0.05) 31px,
-			rgba(0,0,0,0.05) 32px
+			rgba(255, 80, 20, 0.02) 31px,
+			rgba(255, 80, 20, 0.02) 32px
 		),
 		repeating-linear-gradient(
 			90deg,
 			transparent,
 			transparent 31px,
-			rgba(0,0,0,0.05) 31px,
-			rgba(0,0,0,0.05) 32px
+			rgba(255, 80, 20, 0.02) 31px,
+			rgba(255, 80, 20, 0.02) 32px
 		),
-		linear-gradient(180deg, #1a0a2e 0%, #0f0520 60%, #1a0a2e 100%);
+		linear-gradient(180deg, #200C04 0%, #120400 40%, #1A0800 70%, #200C04 100%);
 	image-rendering: pixelated;
 }
 
@@ -63,26 +66,41 @@
 }
 
 @keyframes cc-glow-pulse {
-	0%, 100% { filter: drop-shadow(0 0 8px var(--mc-diamond)) drop-shadow(0 0 16px rgba(74, 237, 217, 0.3)); }
-	50% { filter: drop-shadow(0 0 16px var(--mc-diamond-glow)) drop-shadow(0 0 32px rgba(74, 237, 217, 0.5)); }
-}
-
-@keyframes cc-sparkle {
-	0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
-	50% { opacity: 1; transform: scale(1) rotate(180deg); }
-}
-
-@keyframes cc-border-glow {
 	0%, 100% {
-		box-shadow:
-			inset 0 0 8px rgba(74, 237, 217, 0.15),
-			0 0 6px rgba(74, 237, 217, 0.1);
+		filter:
+			drop-shadow(0 0 8px var(--mc-ember))
+			drop-shadow(0 0 16px rgba(255, 107, 44, 0.3));
 	}
 	50% {
-		box-shadow:
-			inset 0 0 12px rgba(74, 237, 217, 0.25),
-			0 0 12px rgba(74, 237, 217, 0.2);
+		filter:
+			drop-shadow(0 0 18px var(--mc-ember-glow))
+			drop-shadow(0 0 36px rgba(255, 107, 44, 0.5))
+			drop-shadow(0 0 50px rgba(255, 69, 0, 0.2));
 	}
+}
+
+@keyframes cc-ember-flicker {
+	0%, 100% {
+		box-shadow:
+			inset 0 0 10px rgba(255, 107, 44, 0.12),
+			0 0 8px rgba(255, 107, 44, 0.08);
+	}
+	33% {
+		box-shadow:
+			inset 0 0 14px rgba(255, 107, 44, 0.2),
+			0 0 14px rgba(255, 107, 44, 0.15),
+			0 0 30px rgba(255, 69, 0, 0.06);
+	}
+	66% {
+		box-shadow:
+			inset 0 0 8px rgba(255, 143, 64, 0.18),
+			0 0 10px rgba(255, 143, 64, 0.12);
+	}
+}
+
+@keyframes cc-lava-flow {
+	0% { background-position: 0% 0%; }
+	100% { background-position: 0% 100%; }
 }
 
 /* --- Header --- */
@@ -97,18 +115,19 @@
 	font-weight: 700;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	color: var(--mc-diamond);
+	color: var(--mc-ember);
 	text-shadow:
-		0 0 10px rgba(74, 237, 217, 0.6),
-		0 0 20px rgba(74, 237, 217, 0.3),
-		0 2px 0 var(--mc-diamond-dark);
+		0 0 10px rgba(255, 107, 44, 0.7),
+		0 0 25px rgba(255, 69, 0, 0.4),
+		0 0 40px rgba(255, 69, 0, 0.15),
+		0 2px 0 #3A1A00;
 	background: linear-gradient(
 		90deg,
-		var(--mc-diamond) 0%,
-		var(--mc-diamond-glow) 40%,
-		#fff 50%,
-		var(--mc-diamond-glow) 60%,
-		var(--mc-diamond) 100%
+		var(--mc-ember) 0%,
+		var(--mc-ember-hot) 30%,
+		#FFD4A8 50%,
+		var(--mc-ember-hot) 70%,
+		var(--mc-ember) 100%
 	);
 	background-size: 200% auto;
 	background-clip: text;
@@ -129,12 +148,13 @@
 .cc-cookie-count {
 	font-size: 1.4em;
 	font-weight: 700;
-	color: var(--mc-diamond);
+	color: var(--mc-ember-hot);
 	letter-spacing: 0.02em;
 	line-height: 1.2;
 	text-shadow:
-		0 0 8px rgba(74, 237, 217, 0.5),
-		0 1px 0 var(--mc-diamond-dark);
+		0 0 10px rgba(255, 107, 44, 0.6),
+		0 0 20px rgba(255, 69, 0, 0.25),
+		0 1px 0 #3A1A00;
 }
 
 .cc-cps {
@@ -145,7 +165,7 @@
 	letter-spacing: 0.04em;
 }
 
-/* --- Diamond Button --- */
+/* --- Netherite Button --- */
 .cc-cookie-btn-wrapper {
 	position: relative;
 	margin-top: 10px;
@@ -163,18 +183,22 @@
 	transition: transform 0.06s ease, box-shadow 0.12s ease;
 	background:
 		linear-gradient(135deg,
-			rgba(74, 237, 217, 0.08) 0%,
-			rgba(74, 237, 217, 0.02) 50%,
-			rgba(74, 237, 217, 0.08) 100%
+			rgba(255, 107, 44, 0.06) 0%,
+			rgba(255, 69, 0, 0.02) 40%,
+			rgba(255, 107, 44, 0.06) 60%,
+			rgba(139, 37, 0, 0.08) 100%
 		),
-		var(--mc-obsidian);
+		linear-gradient(180deg,
+			#2A1208 0%,
+			#1A0800 100%
+		);
 	border: 3px solid var(--mc-stone-dark);
 	box-shadow:
-		inset 2px 2px 0 rgba(255,255,255,0.08),
-		inset -2px -2px 0 rgba(0,0,0,0.3),
-		0 0 20px rgba(74, 237, 217, 0.15),
-		0 4px 12px rgba(0, 0, 0, 0.4);
-	animation: cc-border-glow 2.5s ease-in-out infinite;
+		inset 2px 2px 0 rgba(255, 171, 96, 0.08),
+		inset -2px -2px 0 rgba(0,0,0,0.4),
+		0 0 20px rgba(255, 107, 44, 0.12),
+		0 4px 12px rgba(0, 0, 0, 0.5);
+	animation: cc-ember-flicker 3s ease-in-out infinite;
 	position: relative;
 	overflow: hidden;
 }
@@ -185,36 +209,49 @@
 	inset: 0;
 	background: linear-gradient(
 		105deg,
-		transparent 30%,
-		rgba(74, 237, 217, 0.12) 45%,
-		rgba(255, 255, 255, 0.15) 50%,
-		rgba(74, 237, 217, 0.12) 55%,
-		transparent 70%
+		transparent 25%,
+		rgba(255, 107, 44, 0.1) 40%,
+		rgba(255, 171, 96, 0.18) 50%,
+		rgba(255, 107, 44, 0.1) 60%,
+		transparent 75%
 	);
 	background-size: 250% 100%;
 	animation: cc-shimmer 2.5s ease-in-out infinite;
 	pointer-events: none;
 }
 
+/* Lava crack lines on the button */
+.cc-cookie-btn::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(circle at 25% 75%, rgba(255, 69, 0, 0.15) 0%, transparent 25%),
+		radial-gradient(circle at 70% 30%, rgba(255, 107, 44, 0.1) 0%, transparent 20%),
+		radial-gradient(circle at 50% 90%, rgba(255, 69, 0, 0.08) 0%, transparent 30%);
+	pointer-events: none;
+}
+
 .cc-cookie-btn:hover {
 	transform: scale(1.06);
-	border-color: var(--mc-diamond);
+	border-color: var(--mc-ember);
 	box-shadow:
-		inset 2px 2px 0 rgba(255,255,255,0.12),
+		inset 2px 2px 0 rgba(255, 171, 96, 0.12),
 		inset -2px -2px 0 rgba(0,0,0,0.3),
-		0 0 30px rgba(74, 237, 217, 0.35),
-		0 0 60px rgba(74, 237, 217, 0.15),
-		0 6px 16px rgba(0, 0, 0, 0.5);
+		0 0 30px rgba(255, 107, 44, 0.35),
+		0 0 60px rgba(255, 69, 0, 0.15),
+		0 6px 16px rgba(0, 0, 0, 0.6);
 }
 
 .cc-cookie-btn:active,
 .cc-cookie-btn.cc-cookie-clicked {
 	transform: scale(0.90);
 	box-shadow:
-		inset -2px -2px 0 rgba(255,255,255,0.08),
-		inset 2px 2px 0 rgba(0,0,0,0.3),
-		0 0 40px rgba(74, 237, 217, 0.5),
-		0 2px 6px rgba(0, 0, 0, 0.5);
+		inset -2px -2px 0 rgba(255, 171, 96, 0.08),
+		inset 2px 2px 0 rgba(0,0,0,0.4),
+		0 0 45px rgba(255, 107, 44, 0.55),
+		0 0 80px rgba(255, 69, 0, 0.2),
+		0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .cc-cookie-emoji {
@@ -236,14 +273,14 @@
 	font-size: 0.85em;
 	font-weight: 700;
 	font-family: 'Silkscreen', monospace;
-	color: var(--mc-gold);
+	color: var(--mc-ember-hot);
 	pointer-events: none;
 	animation: cc-float-up 1s ease-out forwards;
 	white-space: nowrap;
 	text-shadow:
-		0 0 8px rgba(252, 219, 5, 0.6),
-		0 0 16px rgba(252, 219, 5, 0.3),
-		1px 1px 0 rgba(0,0,0,0.5);
+		0 0 8px rgba(255, 107, 44, 0.7),
+		0 0 16px rgba(255, 69, 0, 0.4),
+		1px 1px 0 rgba(0,0,0,0.6);
 }
 
 @keyframes cc-float-up {
@@ -267,7 +304,7 @@
 	padding: 0 12px;
 	border-bottom: 3px solid var(--mc-stone-dark);
 	flex-shrink: 0;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.3);
 }
 
 .cc-tab {
@@ -292,9 +329,9 @@
 }
 
 .cc-tab.cc-tab-active {
-	color: var(--mc-grass-light);
-	border-bottom-color: var(--mc-grass-light);
-	text-shadow: 0 0 8px rgba(126, 200, 80, 0.5);
+	color: var(--mc-ember-hot);
+	border-bottom-color: var(--mc-ember);
+	text-shadow: 0 0 8px rgba(255, 107, 44, 0.5);
 }
 
 /* --- Shop Container --- */
@@ -310,7 +347,7 @@
 	width: 6px;
 }
 .cc-shop-container::-webkit-scrollbar-track {
-	background: rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.3);
 }
 .cc-shop-container::-webkit-scrollbar-thumb {
 	background: var(--mc-stone-dark);
@@ -338,18 +375,18 @@
 	background: var(--mc-panel);
 	border: 2px solid var(--mc-border);
 	box-shadow:
-		inset 1px 1px 0 rgba(255,255,255,0.05),
-		inset -1px -1px 0 rgba(0,0,0,0.2);
+		inset 1px 1px 0 rgba(255, 171, 96, 0.04),
+		inset -1px -1px 0 rgba(0,0,0,0.25);
 }
 
 .cc-building-row.cc-affordable:hover {
 	background: var(--mc-panel-hover);
-	border-color: var(--mc-grass);
+	border-color: var(--mc-ember);
 	transform: translateX(3px);
 	box-shadow:
-		inset 1px 1px 0 rgba(255,255,255,0.08),
+		inset 1px 1px 0 rgba(255, 171, 96, 0.08),
 		inset -1px -1px 0 rgba(0,0,0,0.2),
-		0 0 10px rgba(93, 155, 58, 0.2);
+		0 0 12px rgba(255, 107, 44, 0.2);
 }
 
 .cc-building-row.cc-affordable:active {
@@ -373,7 +410,7 @@
 	flex-shrink: 0;
 	width: 30px;
 	text-align: center;
-	filter: drop-shadow(0 0 3px rgba(252, 219, 5, 0.3));
+	filter: drop-shadow(0 0 3px rgba(255, 107, 44, 0.3));
 }
 
 .cc-building-info {
@@ -390,7 +427,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	letter-spacing: 0.03em;
-	text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
 }
 
 .cc-building-cost {
@@ -408,11 +445,11 @@
 .cc-building-owned {
 	font-size: 1.2em;
 	font-weight: 700;
-	color: var(--mc-diamond);
+	color: var(--mc-ember-hot);
 	min-width: 24px;
 	text-align: right;
 	display: inline-block;
-	text-shadow: 0 0 6px rgba(74, 237, 217, 0.4);
+	text-shadow: 0 0 6px rgba(255, 107, 44, 0.4);
 }
 
 /* --- Upgrade Rows --- */
@@ -427,8 +464,8 @@
 	background: var(--mc-panel);
 	border: 2px solid var(--mc-border);
 	box-shadow:
-		inset 1px 1px 0 rgba(255,255,255,0.05),
-		inset -1px -1px 0 rgba(0,0,0,0.2);
+		inset 1px 1px 0 rgba(255, 171, 96, 0.04),
+		inset -1px -1px 0 rgba(0,0,0,0.25);
 }
 
 .cc-upgrade-row.cc-affordable:hover {
@@ -436,7 +473,7 @@
 	border-color: var(--mc-enchant-purple);
 	transform: translateX(3px);
 	box-shadow:
-		inset 1px 1px 0 rgba(255,255,255,0.08),
+		inset 1px 1px 0 rgba(255, 171, 96, 0.06),
 		inset -1px -1px 0 rgba(0,0,0,0.2),
 		0 0 12px rgba(168, 85, 247, 0.25);
 }
@@ -479,7 +516,7 @@
 	letter-spacing: 0.03em;
 	text-shadow:
 		0 0 6px rgba(168, 85, 247, 0.4),
-		1px 1px 0 rgba(0,0,0,0.4);
+		1px 1px 0 rgba(0,0,0,0.5);
 }
 
 .cc-upgrade-desc {
@@ -514,11 +551,11 @@
 	justify-content: center;
 	flex-shrink: 0;
 	border-top: 3px solid var(--mc-stone-dark);
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.3);
 }
 
 .cc-reset-btn {
-	background: rgba(255, 26, 26, 0.1);
+	background: rgba(255, 26, 26, 0.08);
 	border: 2px solid var(--mc-stone-dark);
 	color: var(--mc-text-dim);
 	padding: 4px 14px;
@@ -531,8 +568,8 @@
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 	box-shadow:
-		inset 1px 1px 0 rgba(255,255,255,0.05),
-		inset -1px -1px 0 rgba(0,0,0,0.2);
+		inset 1px 1px 0 rgba(255,255,255,0.04),
+		inset -1px -1px 0 rgba(0,0,0,0.25);
 }
 
 .cc-reset-btn:hover {
@@ -540,7 +577,7 @@
 	border-color: var(--mc-redstone);
 	background: rgba(255, 26, 26, 0.15);
 	box-shadow:
-		inset 1px 1px 0 rgba(255,255,255,0.05),
+		inset 1px 1px 0 rgba(255,255,255,0.04),
 		inset -1px -1px 0 rgba(0,0,0,0.2),
 		0 0 10px rgba(255, 26, 26, 0.2);
 	text-shadow: 0 0 6px rgba(255, 26, 26, 0.4);

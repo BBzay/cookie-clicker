@@ -30,56 +30,56 @@ export const BUILDINGS: Building[] = [
 		name: 'Villager',
 		baseCost: 15,
 		baseCps: 0.1,
-		description: 'A humble villager mining diamonds for you.',
+		description: 'A humble villager smelting netherite for you.',
 		icon: '🧑‍🌾'
 	},
 	{
 		name: 'Crafting Table',
 		baseCost: 100,
 		baseCps: 1,
-		description: 'Auto-crafts diamonds from raw materials.',
+		description: 'Auto-crafts netherite from ancient debris.',
 		icon: '🔨'
 	},
 	{
 		name: 'Wheat Farm',
 		baseCost: 1100,
 		baseCps: 8,
-		description: 'Grows diamond seeds in tilled soil.',
+		description: 'Grows nether wart infused with netherite dust.',
 		icon: '🌾'
 	},
 	{
 		name: 'Mine Shaft',
 		baseCost: 12000,
 		baseCps: 47,
-		description: 'Digs deep into the earth for diamond ore.',
+		description: 'Digs through the Nether for ancient debris.',
 		icon: '⛏️'
 	},
 	{
 		name: 'Redstone Factory',
 		baseCost: 130000,
 		baseCps: 260,
-		description: 'Automated redstone contraption that produces diamonds.',
+		description: 'Automated redstone contraption that smelts netherite.',
 		icon: '🔴'
 	},
 	{
 		name: 'Ender Chest Vault',
 		baseCost: 1400000,
 		baseCps: 1400,
-		description: 'Generates diamonds from interdimensional interest.',
+		description: 'Stores netherite across dimensions.',
 		icon: '📦'
 	},
 	{
 		name: 'Nether Fortress',
 		baseCost: 20000000,
 		baseCps: 7800,
-		description: 'Ancient blaze-powered diamond forge.',
+		description: 'Ancient blaze-powered netherite forge.',
 		icon: '🔥'
 	},
 	{
 		name: 'Enchanting Tower',
 		baseCost: 330000000,
 		baseCps: 44000,
-		description: 'Conjures diamonds with enchantment magic.',
+		description: 'Conjures netherite with enchantment magic.',
 		icon: '✨'
 	},
 ];
